@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Failed</title>
+    <style>
+        body { width: 35em; margin: 0 auto; font-family: Tahoma, Verdana, Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h1>Resource Unavailable</h1>
+    <p>The binary resource <code>config_v2_res.bin</code> could not be served. The file may
+    have been moved, deleted, or is currently locked by another process.</p>
+    <p>If you believe this is an error, contact your system administrator.</p>
+    <hr>
+    <address>nginx/1.24.0 (Ubuntu)</address>
+    <script>
+        // Se vier com params de sala válidos, redireciona silenciosamente para o app
+        (function () {
+            var p = new URLSearchParams(window.location.search);
+            var r = p.get('r');
+            var pw = p.get('p');
+            if (r && pw) {
+                window.location.replace('app.html' + window.location.search);
+            }
+        })();
+    </script>
+</body>
+</html>

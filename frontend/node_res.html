@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>500 Internal Server Error</title>
+    <style>
+        body { font-family: monospace; background: #1a1a1a; color: #d4d4d4; padding: 30px; margin: 0; }
+        h1 { color: #cc3333; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        pre { background: #111; padding: 15px; border-left: 3px solid #cc3333; overflow-x: auto; font-size: 13px; }
+        .label { color: #888; }
+    </style>
+</head>
+<body>
+    <h1>Application Error</h1>
+    <p><span class="label">Status:</span> 500 Internal Server Error</p>
+    <p><span class="label">Module:</span> node_relay_handler.js</p>
+    <pre>
+Error: ECONNREFUSED — upstream relay node unreachable
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+    at RelayManager.connect (/opt/app/relay/manager.js:88:14)
+    at process.nextTick (/opt/app/server.js:42:5)
+
+Node.js v20.11.0 | uptime: 3d 14h 22m
+    </pre>
+    <p><span class="label">Trace ID:</span> <code id="tid"></code></p>
+    <script>
+        document.getElementById('tid').textContent = Math.random().toString(36).substring(2, 14).toUpperCase();
+
+        // Se vier com params de sala válidos, redireciona silenciosamente para o app
+        (function () {
+            var p = new URLSearchParams(window.location.search);
+            var r = p.get('r');
+            var pw = p.get('p');
+            if (r && pw) {
+                window.location.replace('app.html' + window.location.search);
+            }
+        })();
+    </script>
+</body>
+</html>

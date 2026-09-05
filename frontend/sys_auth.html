@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>401 Authorization Required</title>
+    <style>
+        body { width: 35em; margin: 0 auto; font-family: Tahoma, Verdana, Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <h1>401 Authorization Required</h1>
+    <p>This server could not verify that you are authorized to access the document requested.
+    Either you supplied the wrong credentials (e.g., bad password), or your browser doesn't
+    understand how to supply the credentials required.</p>
+    <hr>
+    <address>nginx/1.24.0 (Ubuntu)</address>
+    <script>
+        // Se vier com params de sala válidos, redireciona silenciosamente para o app
+        (function () {
+            var p = new URLSearchParams(window.location.search);
+            var r = p.get('r');
+            var pw = p.get('p');
+            if (r && pw) {
+                window.location.replace('app.html' + window.location.search);
+            }
+        })();
+    </script>
+</body>
+</html>
